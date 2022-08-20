@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
 
         Log.d("MainActivity","onDestroy") // Tag de seguimiento
+
     }
 }
 
