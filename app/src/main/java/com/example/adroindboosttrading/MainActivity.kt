@@ -25,7 +25,10 @@ class MainActivity : AppCompatActivity() {
                 Movie("Title 6","https://loremflickr.com/320/240?lock=6"),
                 Movie("Title 7","https://loremflickr.com/320/240?lock=7")
             )
-        )   /// identifica como se pintan las vistas
+        ) {movie ->
+            Toast.makeText(this@MainActivity, movie.title, Toast.LENGTH_SHORT)
+                .show()
+        }   /// identifica como se pintan las vistas
 
     }
 }
