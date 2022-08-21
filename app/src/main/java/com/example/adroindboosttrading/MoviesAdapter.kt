@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.adroindboosttrading.databinding.ViewMovieItemBinding
+import com.example.adroindboosttrading.model.Movie
 
 class MoviesAdapter(
-    private val movies: List<Movie>,
+    var movies: List<Movie>,
     val movieClickedListener: (Movie) -> Unit  ///lamnda agregada para la ejecucion de una accion de click sobre la imagen de los recycleview
 ) :
     RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
@@ -41,8 +42,9 @@ class MoviesAdapter(
     class ViewHolder(val binding: ViewMovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.titleMovie.text = movie.title
-            Glide.with(binding.root.context)
-                .load(movie.cover)
+            Glide
+                .with(binding.root.context)
+                .load("https://image.tmdb.org/t/p/w185${movie.poster_path}")
                 .into(binding.cover)
 
         }
