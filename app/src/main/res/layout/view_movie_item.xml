@@ -7,13 +7,13 @@
     android:orientation="vertical"
     android:padding="2dp">
 
-    <ImageView
+    <com.example.adroindboosttrading.AspectRatioImageView
         android:id="@+id/cover"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:ratio="1.5"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/titleMovie"
