@@ -1,6 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+
+    // plugin para realizar el parcelable
+//    id 'kotlin-android-extensions'   el antiguo
+    id 'kotlin-parcelize'
+
 }
 
 android {
@@ -31,7 +36,7 @@ android {
     }
 
     // Libreria agregada para inflar componentes
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }

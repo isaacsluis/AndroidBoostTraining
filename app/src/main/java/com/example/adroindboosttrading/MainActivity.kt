@@ -1,16 +1,13 @@
 package com.example.adroindboosttrading
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.adroindboosttrading.databinding.ActivityMainBinding
+import com.example.adroindboosttrading.model.Movie
 import com.example.adroindboosttrading.model.MovieDbClient
 import kotlinx.coroutines.launch
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,12 +16,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val moviesAdapter = MoviesAdapter(
-            emptyList()
-        ) { movie ->
-            Toast.makeText(this@MainActivity, movie.title, Toast.LENGTH_SHORT)
-                .show()
-        }
+        val moviesAdapter = MoviesAdapter(emptyList()) { movie -> navigateTo(movie)}
 
         binding.recycler.adapter = moviesAdapter
 
@@ -35,6 +27,16 @@ class MainActivity : AppCompatActivity() {
             moviesAdapter.movies = popularMovies.results
             moviesAdapter.notifyDataSetChanged()
         }
+    }
+
+    // esta funcion nos lleva a la navegacion de la nueva activity
+    private fun navigateTo(movie: Movie) {
+
+        val intent = Intent(this,DetailActivity::class.java)
+         intent.putExtra(DetailActivity.EXTRA_MOVIE,movie)
+
+        startActivity(intent)
+
     }
 }
 
